@@ -1,0 +1,53 @@
+.lower-section{
+        display: flex;
+        width: 100%;
+        justify-content: flex-end;
+}
+.lower-section .inputs{ 
+        height: 1.8rem;
+        display: flex;
+        justify-content: space-between;
+        width: 65%;
+}
+#risk, #reward{
+        width: 4rem;
+}
+form{
+        height: 2rem;
+        margin-right: 0.2rem;
+        display: flex;
+        align-items: center;
+}
+form label{
+        color: white;
+        padding: 0;
+        font-size: 0.8rem;
+        left: 20px;
+        /* display: none; */
+        margin-right: 0.2rem;
+}
+
+form input{
+        width: 6rem;
+        height: 1rem;
+
+        border:0;
+        outline: 0;
+
+        font-size: 0.9rem;
+        padding: 0.5rem;
+}
+
+.calc-btn{
+        width: 8.53rem;
+        margin-left: 0.25rem;
+        border: 0;
+        background-color: white;
+        color:var(--primary-dark);
+        font-size: 0.8rem;
+        font-weight: 600;
+        transition: all 150ms linear;
+}
+.calc-btn:hover{
+        background-color: rgb(227, 172, 227);
+}

@@ -1,0 +1,50 @@
+*{
+        padding: 0;
+        margin: 0;
+
+        box-sizing: border-box;
+}
+html{
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 20px;
+}
+:root{
+        --primary-dark: rgb(71, 16, 71);
+        --secondary-dark: purple;
+}
+body{
+        background-color: var(--secondary-dark);
+
+        height: 100vh;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+}
+.app-title{
+        color: white;
+}
+main{
+        background-color: var(--primary-dark);
+
+        width: 1000px;
+        height: 505px;
+        margin-top: 1rem;
+        display: flex;
+        flex-direction: column;
+}
+.upper-section{
+        display: flex;
+}
+.my-canvas{
+        background-color: white;
+
+        height: 466px;
+        width: 650px;
+
+        border: 5px solid var(--primary-dark);
+}
+.lower-section{
+        height: 1.8rem;
+}

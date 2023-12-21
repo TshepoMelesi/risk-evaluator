@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="./src/css/main.css">
+        <link rel="stylesheet" href="./src/css/panel.css">
+        <link rel="stylesheet" href="./src/css/controls.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Risk Evaluator</title>
+</head>
+<body>
+        <h1 class="app-title">Risk Evaluation Simulator</h1>
+        <main>
+                <div class="upper-section">
+                        <canvas class="my-canvas" id="myCanvas"></canvas>
+
+                        <div class="panel" id="panel">
+
+                                <h1 class="panel-title">Trades</h1>
+
+                                <div class="trade-columns">
+                                        <p>Bal</p>
+                                        <p>Gain</p>
+                                        <p>Bal</p>
+                                        <p>Growth</p>
+                                </div>
+
+                                <div class="trade-list">
+                                        <div class="trade">
+                                                <p class="balance">3000</p>
+                                                <p class="gain">+300</p>
+                                                <p class="new-balance">3300</p>
+                                                <p class="growth">10%</p>
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+                <div class="lower-section">
+                        <div class="inputs">
+
+                                <form>
+                                        <label for="risk">Risk</label>
+                                        <input type="number" name="risk" id="risk" value="1" min="0.5"
+                                        max="100" step="0.5">
+                                </form>
+                                <form>
+                                        <label for="reward">Reward</label>
+                                        <input type="number" name="reward" id="reward" value="1" min="0.5"
+                                        max="100" step="0.5">
+                                </form>
+                                <form>
+                                        <label for="tradesTotal">Trades</label>
+                                        <input type="number" name="tradesTotal" id="tradesTotal" value="1" min="1"
+                                        max="9000" step="1">
+                                </form>
+                                <form>
+                                        <label for="deposit">Deposit</label>
+                                        <input type="number" name="deposit" id="deposit" value="1000" min="100"
+                                         max="1000000" step="100">
+                                </form>
+
+                        </div>
+                        <button id="calcBtn" class="calc-btn">CALCULATE</button>
+                        <button id="clrBtn" class="calc-btn">CLEAR </button>
+                </div>
+        </main>
+</body>
+</html>
