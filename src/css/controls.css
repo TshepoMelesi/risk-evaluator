@@ -26,7 +26,6 @@ form label{
         /* display: none; */
         margin-right: 0.2rem;
 }
-
 form input{
         width: 6rem;
         height: 1rem;
@@ -37,7 +36,6 @@ form input{
         font-size: 0.9rem;
         padding: 0.5rem;
 }
-
 .calc-btn{
         width: 8.53rem;
         margin-left: 0.25rem;
