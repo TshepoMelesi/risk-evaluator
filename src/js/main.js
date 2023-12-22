@@ -8,6 +8,9 @@ class App{
                 this.risk = document.getElementById( "risk" ).value;
                 this.reward = document.getElementById( "reward" ).value;
                 this.tradesTotal = document.getElementById( "tradesTotal" ).value;
+
+                this.calculateBtn = document.getElementById("calcBtn")
+                this.clrBtn = document.getElementById("clrBtn")
                 
                 this.tradesList = document.getElementById( "tradesList" );
                 this.canvas = document.getElementById( "myCanvas" );
@@ -22,3 +25,4 @@ class App{
 
 // initializing the app
 const app = new App()
+console.log("main")
