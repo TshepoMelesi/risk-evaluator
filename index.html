@@ -16,7 +16,18 @@
 
                         <div class="panel" id="panel">
 
-                                <h1 class="panel-title">Trades</h1>
+                                <header>
+                                        <h1 class="panel-title">Trades</h1>
+
+                                        <div class="stats">
+                                                <div>
+                                                        <p class="total-trades"><span id="possibleTrades">23</span> trades</p>
+                                                </div>
+                                                <div>
+                                                        <p class="success-rate"><span id="winRate">30</span>% Win rate</p>
+                                                </div>
+                                        </div>
+                                </header>
 
                                 <div class="trade-columns">
                                         <p>Bal</p>
@@ -25,13 +36,8 @@
                                         <p>Growth</p>
                                 </div>
 
-                                <div class="trade-list">
-                                        <div class="trade">
-                                                <p class="balance">3000</p>
-                                                <p class="gain">+300</p>
-                                                <p class="new-balance">3300</p>
-                                                <p class="growth">10%</p>
-                                        </div>
+                                <div class="trade-list" id="tradesList">
+                                        
                                 </div>
                         </div>
                 </div>
