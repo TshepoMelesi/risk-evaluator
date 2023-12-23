@@ -39,3 +39,25 @@
 .loss{
         color: red;
 }
+header{
+        display: flex;
+        justify-content: space-between;
+}
+
+.stats{
+        margin: 0 1rem;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+}
+.stats .total-trades{
+        color: white;
+        font-weight: bold;
+        font-size: 1rem;
+}
+.stats .success-rate{
+        color: white;
+        font-weight: 500;
+        font-size: .7rem;
+}

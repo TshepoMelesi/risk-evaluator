@@ -5,50 +5,77 @@ import Controls from "./Controls.js";
 class App{
         constructor(){
                 //get all inputs
-                this.deposit = Number(document.getElementById( "deposit" ).value);
-                this.risk = Number(document.getElementById( "risk" ).value);
-                this.reward = Number(document.getElementById( "reward" ).value);
-                this.tradesTotal = Number(document.getElementById( "tradesTotal" ).value);
+                this.deposit = Number( document.getElementById( "deposit" ).value );
+                this.risk = Number( document.getElementById( "risk" ).value );
+                this.reward = Number( document.getElementById( "reward" ).value );
+                this.tradesTotal = Number( document.getElementById( "tradesTotal" ).value );
 
-                this.calculateBtn = document.getElementById("calcBtn");
-                this.clearBtn = document.getElementById("clrBtn");
+                //get statistics holders
+                this.possibleTrades = document.getElementById("possibleTrades");
+                this.possibleTrades.innerHTML = this.tradesTotal
+                this.winRate = document.getElementById("winRate");
+
+                // calculate and clear  buttons
+                this.calculateBtn = document.getElementById( "calcBtn" );
+                this.clearBtn = document.getElementById( "clrBtn" );
+
                 
+
                 this.tradesList = document.getElementById( "tradesList" );
                 this.canvas = document.getElementById( "myCanvas" );
                 this.context = this.canvas.getContext( "2d" );
 
-                this.trades = []
+                // an array of processed trades
+                this.trades = [];
 
+                // other classes
                 this.calculator = new Calculator( this );
                 this.display = new Display( this );
                 this.controls = new Controls( this );
         }
         setInputs(){
-                this.deposit = Number(document.getElementById( "deposit" ).value);
-                this.risk = Number(document.getElementById( "risk" ).value);
-                this.reward = Number(document.getElementById( "reward" ).value);
-                this.tradesTotal = Number(document.getElementById( "tradesTotal" ).value);
+                // if there are any changes in the inputs
+                // this function will assign their values in these variables
+                this.deposit = Number( document.getElementById( "deposit" ).value );
+                this.risk = Number( document.getElementById( "risk" ).value );
+                this.reward = Number( document.getElementById( "reward" ).value );
+                this.tradesTotal = Number( document.getElementById( "tradesTotal" ).value );
         }
         calculate(){
-                this.setInputs();
+                this.setInputs(); // get any new input values before calculating
+                let _wins = 0
+                let _balance = this.deposit;
+                this.possibleTrades.innerHTML= this.tradesTotal; 
+
                 for( let i = 0; i < this.tradesTotal; i++ ){
-                        let ran = this.calculator.isWin() ? "win" : "loss";
-                        let _risk = Math.round((this.risk / 100) * this.deposit);
-                        let _reward = Math.round((this.reward / 100) * this.deposit);
+
+                        let _ran = this.calculator.isWin() ? "win" : "loss";
+                        _ran === "win" ? _wins++ : null; // increment losses
+                        let _risk = Math.round( ( this.risk / 100 ) * this.deposit );
+                        let _reward = Math.round( ( this.reward / 100 ) * this.deposit );
+
+                        if ( _balance <= 0 ) {
+                                this.possibleTrades.innerHTML = i;
+                                return;
+                        }
                         let _trade = {
-                                initBalance: this.deposit,
-                                tradeResult: ran === "win" ? `+${ _reward }` : `-${ _risk }`,
-                                newBalance: ran === "win" ? 
-                                this.deposit += _reward : this.deposit -= _risk
-                        };
-                        this.trades.push(_trade)
+                                initBalance: _balance,
+                                tradeResult: _ran === "win" ? `+${ _reward }` : `-${ _risk}`,
+                                newBalance: _ran === "win" ? 
+                                _balance += _reward : _balance -= _risk,
+                        }; // trade format
+
+                        // push each trades into the processed trades list
+                        this.trades.push(_trade);
+                        // display each trade
+                        this.display.logTrades(_trade);
                 }
-                console.clear()
-                console.table(this.trades)
+
+                // display won trades
+                this.winRate.innerHTML = Math.round ( ( _wins / this.tradesTotal ) * 100 );
         }
 
 }
 
-
 // initializing the app
-const app = new App()
+const app = new App();

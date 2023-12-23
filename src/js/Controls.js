@@ -1,17 +1,23 @@
 class Controls{
         constructor(app){
-                this.app = app
-                console.log("controls")
-                this.app.calculateBtn.addEventListener('click', event => {
-                        this.app.calculate()
+                this.app = app;
 
-                       this.app.trades = []
+                // handle Calculate Button
+                this.app.calculateBtn.addEventListener('click', event => {
+                        this.app.trades = [];
+                        this.app.tradesList.innerHTML = '';
+                        this.app.calculate();
+
+                       //this.app.trades = [];
                 })
+
+                // handle Clear Button
                 this.app.clearBtn.addEventListener('click', event => {
-                        console.log("clear")
+                        this.app.trades = [];
+                        this.app.tradesList.innerHTML = '';
                 })
 
         }
 }
 
-export default Controls
+export default Controls;
