@@ -9,12 +9,8 @@ class Controls{
                         this.app.tradesList.innerHTML = '';
                         this.app.calculate();
 
-                        
-                       //this.app.trades = [];
                        this.app.intervals.draw(this.app.mainSVG)
                        this.app.intervals.drawIntervals()
-                       this.app.intervalsArr.forEach(interval => {
-                       })
                 })
 
                 // handle Clear Button
