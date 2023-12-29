@@ -1,6 +1,7 @@
 import Calculator from "./Calculator.js";
 import Display from "./Display.js";
 import Controls from "./Controls.js";
+import Intervals from "./Intervals.js";
 
 class App{
         constructor(){
@@ -18,20 +19,26 @@ class App{
                 // calculate and clear  buttons
                 this.calculateBtn = document.getElementById( "calcBtn" );
                 this.clearBtn = document.getElementById( "clrBtn" );
-
                 
-
                 this.tradesList = document.getElementById( "tradesList" );
-                this.canvas = document.getElementById( "myCanvas" );
-                this.context = this.canvas.getContext( "2d" );
+                this.mainSVG = document.getElementById( "myCanvas" );
+
+                // width and height of the svg to display on
+                this.width  = Math.round(this.mainSVG.getBoundingClientRect().width)
+                this.height = Math.round(this.mainSVG.getBoundingClientRect().height)
 
                 // an array of processed trades
                 this.trades = [];
+                this.intervalsArr = []
 
                 // other classes
                 this.calculator = new Calculator( this );
                 this.display = new Display( this );
+                this.intervals = new Intervals(this);
                 this.controls = new Controls( this );
+
+                // instant initiations
+                this.intervals.draw(this.mainSVG);
         }
         setInputs(){
                 // if there are any changes in the inputs
