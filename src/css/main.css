@@ -51,3 +51,8 @@ main{
 .point:hover{
         background-color: red;
 }
+
+.highlight{
+        color: rgb(225, 255, 0);
+        font-weight: bold;
+}

@@ -28,6 +28,15 @@ class App{
                 this.width  = Math.round(this.mainSVG.getBoundingClientRect().width);
                 this.height = Math.round(this.mainSVG.getBoundingClientRect().height);
 
+
+                // get the description spans
+                this.risked =document.getElementById("risked")
+                this.deposited =document.getElementById("deposited")
+                this.winrate =document.getElementById("winrate")
+                this.winning =document.getElementById("rewarded")
+                this.roi =document.getElementById("roi")
+                this.totTrades =document.getElementById("totTrades")
+
                 // an array of processed trades
                 this.trades = [];
                 this.intervalsArr = [];
@@ -69,13 +78,15 @@ class App{
                 let _wins = 0
                 let _balance = this.deposit;
                 this.possibleTrades.innerHTML= this.tradesTotal; 
+                let _reward = 0
+                let _risk = 0
 
                 for( let i = 0; i < this.tradesTotal; i++ ){
 
                         let _ran = this.calculator.isWin() ? "win" : "loss";
                         _ran === "win" ? _wins++ : null; // increment losses
-                        let _risk = Math.round( ( this.risk / 100 ) * this.deposit );
-                        let _reward = Math.round( ( this.reward / 100 ) * this.deposit );
+                        _risk = Math.round( ( this.risk / 100 ) * this.deposit );
+                        _reward = Math.round( ( this.reward / 100 ) * this.deposit );
 
                         if ( _balance <= 0 ) {
                                 this.possibleTrades.innerHTML = i;
@@ -95,8 +106,12 @@ class App{
 
                 }
                 // display won trades
-                this.winRate.innerHTML = Math.round ( ( _wins / this.tradesTotal ) * 100 );
-                console.log(this.trades)
+                let _rate = Math.round ( ( _wins / this.tradesTotal ) * 100 );
+                this.winRate.innerHTML = _rate;
+                this.winrate.innerHTML = _rate;
+                this.deposited.innerHTML = this.deposit;
+                this.winning.innerHTML = _reward;
+                this.risked.innerHTML = _risk;
                 return this.trades
         }
 

@@ -31,6 +31,11 @@ class Calculator{
                                         - this.app.intervals.sPad, 
                                 x: idx * (x_scaling_factor) + this.app.intervals.bPad}
                 })
+                let _roi = balances[this.app.tradesTotal - 1] - balances[0]
+                let _roi_message = _roi < 0 ? `<u>loose</u> $${ _roi * -1 }` : `<u>make</u> $${ _roi }`;
+
+                this.app.roi.innerHTML = _roi_message
+                this.app.totTrades.innerHTML = this.app.tradesTotal
 
                 return points
         }
