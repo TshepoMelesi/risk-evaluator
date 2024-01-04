@@ -2,6 +2,7 @@ import Calculator from "./Calculator.js";
 import Display from "./Display.js";
 import Controls from "./Controls.js";
 import Intervals from "./Intervals.js";
+import PopUp from "./PopUp.js";
 
 class App{
         constructor(){
@@ -24,14 +25,29 @@ class App{
                 this.mainSVG = document.getElementById( "myCanvas" );
 
                 // width and height of the svg to display on
-                this.width  = Math.round(this.mainSVG.getBoundingClientRect().width)
-                this.height = Math.round(this.mainSVG.getBoundingClientRect().height)
+                this.width  = Math.round(this.mainSVG.getBoundingClientRect().width);
+                this.height = Math.round(this.mainSVG.getBoundingClientRect().height);
 
                 // an array of processed trades
                 this.trades = [];
-                this.intervalsArr = []
+                this.intervalsArr = [];
+
+                // axis height and width, points
+                this.axisHeight = 0;
+                this.axisWidth = 0;
+                this.points = [];
+                this.drawnPoints = []
+
+                // check if canvas is displaying
+                this.isDisplay = false;
+                this.isPoly = false;
+
+                // set mouse coordinates
+                this.mouseX = 0;
+                this.mouseY = 0;
 
                 // other classes
+                this.pop = new PopUp(this, 50, 50);
                 this.calculator = new Calculator( this );
                 this.display = new Display( this );
                 this.intervals = new Intervals(this);
@@ -76,10 +92,12 @@ class App{
                         this.trades.push(_trade);
                         // display each trade
                         this.display.logTrades(_trade);
-                }
 
+                }
                 // display won trades
                 this.winRate.innerHTML = Math.round ( ( _wins / this.tradesTotal ) * 100 );
+                console.log(this.trades)
+                return this.trades
         }
 
 }
