@@ -7,6 +7,9 @@ class Intervals{
                 this.color = color
                 this.t = thickness
                 this.intStrike = 10
+
+                this.app.axisHeight = this.app.height - this.bPad - this.sPad
+                this.app.axisWidth = this.app.width - this.bPad - this.sPad
         }
         drawLine(x1, y1, x2, y2, svgToDisplayOn){
                 let D = `M ${x1},${y1} L ${x2},${y2}`

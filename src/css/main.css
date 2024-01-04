@@ -48,3 +48,6 @@ main{
 .lower-section{
         height: 1.8rem;
 }
+.point:hover{
+        background-color: red;
+}
